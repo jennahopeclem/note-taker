@@ -1,15 +1,24 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
+const util = require("util");
+
 const apiRoutes = require("./routes/apiroutes");
 const htmlRoutes = require("./routes/htmlroutes");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/notes", (req, res) => {
+  console.log("Here");
   res.send("Hello World!");
 });
 
