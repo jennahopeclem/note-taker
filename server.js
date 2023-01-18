@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
 const util = require("util");
 
 const apiRoutes = require("./routes/apiroutes");
@@ -15,17 +14,10 @@ app.use(
     extended: true,
   })
 );
+
 app.use(express.json());
-
-app.get("/notes", (req, res) => {
-  console.log("Here");
-  res.send("Hello World!");
-});
-
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
-
-// app.get("/notes", (req, res) => "Navigate to /send or /routes");
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
